@@ -27,7 +27,7 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
-[image9]: ./examples/5imgs.png "5 new images"
+[image9]: ./images/5imgs.png "5 new images"
 
 ## Rubric Points
 
