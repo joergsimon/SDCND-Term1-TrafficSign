@@ -116,7 +116,7 @@ The training is in the same section of the notebook a little bit below. The Epoc
 My final model results were:
 * training set accuracy of 99.6%
 * validation set accuracy of 94.2% 
-* test set accuracy of ?
+* test set accuracy of 93.7%
 
 First I tried different general models and tune the parameter in the sense of tuning the filter number, sizes and similar. I also read a lot of papers on CNNs. Some are quotet, since I write that last minute, some quotes I might fill in later. Basically I could not tune the LeNet-5 Architecture over 93% at first for me, so I tried another architecutre. An already inception like architecture was references as baseline architecuture in the project, so I tried this one. Three paralell streams of convolution filters are computed, and in the end concatenated. The relatively direct translation of the architecture (as much as possible at least) resulted in a worse performance than the LeNet-5. With some adoptions it got better than LeNet-5 but still below 90%. I then read about the inception model, batch normalization, dropout and other techniques, and assembled a simple inception architecture, which yielded a good result on the validation set for me. For details on the architecture see above.
 
@@ -218,7 +218,7 @@ As already writte above the top 5 accuracy was 85.7%
 
 ### Test a Model on Test Dataset
 
-This was computed after the whole report is written. The score on the test data set is: 93,7%
+This was computed after the whole report is written. The score on the test data set is: 93.7%
 
 ## References:
 
