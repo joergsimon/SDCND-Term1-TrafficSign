@@ -122,49 +122,103 @@ First I tried different general models and tune the parameter in the sense of tu
 
 Basically most parameters were choosen because of values reported in papers, like 0.5 for dropout, or that I reduce the number of filters for the intermediate 1x1 convolutions in the inception. A high Dropout was nesecary because of overfitting. Also I think if I would have taken the complete inception v2 architecture but without pretrained weights the model would likely have overfittet. In the end the architecture is some empirically grown network of several small results.
 
-###Test a Model on New Images
-
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+### Test a Model on New Images
 
 Here are six German traffic signs that I found on the web:
 
 ![6 new images][image9]
 
-The first image might be difficult to classify because ...
-
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
-
-Here are the results of the prediction:
+The first and the second image have fractions of other images inside the image and are a bit occluded. The others should be relatively easy. The background is a bit different and so on. I also added a 7th image, a relatively easy 120km/h for testing, it funnyly confused the image with a 20km/h sign. For the Top 1 Klassification error the accuracy was 57.1%.
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| General caution      	| General caution   							| 
+| Children crossing    	| Right-of-way at the next intersection	        |
+| No passing			| No passing									|
+| Bicycles crossing	    | Speed limit (50km/h)			 				|
+| Speed limit (70km/h)	| Speed limit (70km/h)      					|
+| No vehicles	        | No vehicles     	                			|
+| Speed limit (120km/h)	| Speed limit (120km/h)      					|
 
+57.1% is not the highes rate but okayish. Generally the model was pretty certain of it's predictions. While the top 5 accuracy is way better (85.7%) if the label is in the top 5 its certainty is still most of the time almost zero.
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The list of confidences per prediction is shown here:
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+###### General caution
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
+| Probability         	|     Prediction	     						|
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 0.998    				| 18    General caution 				    	|
+| 0.002    				| 11    Right-of-way at the next intersection 	|
+| 0.000    				| 27    Pedestrians 				        	|
+| 0.000    				| 23    Slippery road 				        	|
+| 0.000    				| 2    Speed limit (50km/h) 					|
 
+###### Children crossing
 
-For the second image ... 
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 0.894    				| 11    Right-of-way at the next intersection 	|
+| 0.065    				| 29    Bicycles crossing 					    |
+| 0.027    				| 21    Double curve 					        |
+| 0.004    				| 24    Road narrows on the right 				|
+| 0.003    				| 28    Children crossing 					    |
+
+###### No passing
+
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 1.000    				| 9    No passing 					            |
+| 0.000    				| 16    Vehicles over 3.5 metric tons prohibited    |
+| 0.000    				| 1    Speed limit (30km/h) 					|
+| 0.000    				| 10    No passing for vehicles over 3.5 metric tons |
+| 0.000    				| 19    Dangerous curve to the left 			|
+
+###### Bicycles crossing
+
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 0.446    				| 2    Speed limit (50km/h) 					|
+| 0.239    				| 9    No passing 					            |
+| 0.164    				| 1    Speed limit (30km/h) 					|
+| 0.041    				| 3    Speed limit (60km/h) 					|
+| 0.039    				| 5    Speed limit (80km/h) 					|
+
+###### Speed limit (70km/h)
+
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 0.994    				| 4    Speed limit (70km/h) 					|
+| 0.003    				| 0    Speed limit (20km/h) 					|
+| 0.001    				| 8    Speed limit (120km/h) 					|
+| 0.001    				| 7    Speed limit (100km/h) 					|
+| 0.000    				| 3    Speed limit (60km/h) 					|
+
+###### No vehicles
+
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 1.000    				| 15    No vehicles 					        |
+| 0.000    				| 40    Roundabout mandatory 					|
+| 0.000    				| 13    Yield 					                |
+| 0.000    				| 1    Speed limit (30km/h) 					|
+| 0.000    				| 38    Keep right 					            |
+
+###### Speed limit (120km/h)
+
+| Probability         	|     Prediction	     						|
+|:---------------------:|:---------------------------------------------:| 
+| 0.868    				| 0    Speed limit (20km/h) 					|
+| 0.037    				| 1    Speed limit (30km/h) 					|
+| 0.020    				| 7    Speed limit (100km/h) 					|
+| 0.014    				| 8    Speed limit (120km/h) 					|
+| 0.014    				| 14   Stop 					                |
+
+As already writte above the top 5 accuracy was 85.7%
+
+### Test a Model on Test Dataset
+
+This was computed after the whole report is written. The score on the test data set is: 93,7%
 
 ## References:
 
