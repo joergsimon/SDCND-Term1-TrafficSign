@@ -128,7 +128,7 @@ Basically most parameters were choosen because of values reported in papers, lik
 
 Here are six German traffic signs that I found on the web:
 
-![6 new images][[image9]
+![6 new images][[image9]]
 
 The first image might be difficult to classify because ...
 
