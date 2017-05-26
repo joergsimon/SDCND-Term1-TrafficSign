@@ -27,6 +27,7 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image9]: ./examples/5imgs.png "5 new images"
 
 ## Rubric Points
 
@@ -121,18 +122,13 @@ First I tried different general models and tune the parameter in the sense of tu
 
 Basically most parameters were choosen because of values reported in papers, like 0.5 for dropout, or that I reduce the number of filters for the intermediate 1x1 convolutions in the inception. A high Dropout was nesecary because of overfitting. Also I think if I would have taken the complete inception v2 architecture but without pretrained weights the model would likely have overfittet. In the end the architecture is some empirically grown network of several small results.
 
-
-
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
-
 ###Test a Model on New Images
 
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are six German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![6 new images][[image9]
 
 The first image might be difficult to classify because ...
 
