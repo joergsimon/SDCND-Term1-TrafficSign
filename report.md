@@ -1,8 +1,8 @@
-#**Traffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
-##Writeup Template
+## Writeup Template
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -31,11 +31,11 @@ The goals / steps of this project are the following:
 ## Rubric Points
 
 ---
-###Writeup / README
+### Writeup / README
 
 This project is a part of my udacity self driving car degree. The goal of the project is to learn state of the art image recognition for recognizing traffic signs. The dataset used was a dataset of german traffic singns from a competion at the IJCNN [1](#Houben2013). A summary of the data is provided in [Data Set Summary & Exploration](#dataset). The technique used for recognition is Convolutional Neural Networks, also referred as CNN or ConvNet. Experiments with different models of ConvNets were done to finally use a variation of the inception model with batch normalization having 96.2% on the validation set and XXXX on the test set. The code of the project can be found at [project code](https://github.com/joergsimon/SDCND-Term1-TrafficSign/Traffic_Sign_Classifier.ipynb).
 
-###Data Set Summary & Exploration<a name="dataset"></a>
+### Data Set Summary & Exploration<a name="dataset"></a>
 
 The dataset used in the project is the german traffic sign detection benchmark, in short GTSDB used for a competion 2013 at the IJCNN [H](#Houben2013). The dataset was however already slightly modified for the project by udacity. Contrary to the original dataset the provided files by udacity were all already cropped to the sign in the center with the same resolution of 32x32 for each image. In total 51.839 images are in this dataset for the competion, of those I used 67.13% (34.799 samples) for training, 8.5% (4.410 samples) for validation and 24.36% (12.630 samples) for final testing. Many of the numbers of this report are numbers calculated from the validation set, as all teaking and experimentation is done with test and validation set to avoid test set contamination. Only directly before submission the final number on the test set is updated in the report.
 
@@ -50,7 +50,7 @@ The similarity of the overall color distribution together with the fact that ear
 
 All this analysis can be found in the cells under "Step 1: Dataset Summary & Exploration" in the [project code](https://github.com/joergsimon/SDCND-Term1-TrafficSign/Traffic_Sign_Classifier.ipynb).
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
 #### Preprocessing
 
@@ -98,6 +98,7 @@ Each Inception layer is made the following way:
 | Max Pool 3x3 stride 	| output: 1/4 of desired output   				| 
 
 F.e. if I use an inception to have 64 filters then:
+
 | INCEPTION Layer  		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1x1 to output    		| output: 16 Filters   							| 
