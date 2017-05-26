@@ -34,20 +34,20 @@ The goals / steps of this project are the following:
 ---
 ### Writeup / README
 
-This project is a part of my udacity self driving car degree. The goal of the project is to learn state of the art image recognition for recognizing traffic signs. The dataset used was a dataset of german traffic singns from a competion at the IJCNN [1](#Houben2013). A summary of the data is provided in [Data Set Summary & Exploration](#dataset). The technique used for recognition is Convolutional Neural Networks, also referred as CNN or ConvNet. Experiments with different models of ConvNets were done to finally use a variation of the inception model with batch normalization having 96.2% on the validation set and XXXX on the test set. The code of the project can be found at [project code](https://github.com/joergsimon/SDCND-Term1-TrafficSign/Traffic_Sign_Classifier.ipynb).
+This project is a part of my udacity self driving car degree. The goal of the project is to learn state of the art image recognition for recognizing traffic signs. The dataset used was a dataset of german traffic singns from a competion at the IJCNN [[1](#Houben2013)]. A summary of the data is provided in [Data Set Summary & Exploration](#dataset). The technique used for recognition is Convolutional Neural Networks, also referred as CNN or ConvNet. Experiments with different models of ConvNets were done to finally use a variation of the inception [[6](#Szegedy2015)] model with batch normalization [[4](#Ioffe2015)] having 96.2% on the validation set and XXXX on the test set. The code of the project can be found at [project code](https://github.com/joergsimon/SDCND-Term1-TrafficSign/Traffic_Sign_Classifier.ipynb).
 
 ### Data Set Summary & Exploration<a name="dataset"></a>
 
 The dataset used in the project is the german traffic sign detection benchmark, in short GTSDB used for a competion 2013 at the IJCNN [H](#Houben2013). The dataset was however already slightly modified for the project by udacity. Contrary to the original dataset the provided files by udacity were all already cropped to the sign in the center with the same resolution of 32x32 for each image. In total 51.839 images are in this dataset for the competion, of those I used 67.13% (34.799 samples) for training, 8.5% (4.410 samples) for validation and 24.36% (12.630 samples) for final testing. Many of the numbers of this report are numbers calculated from the validation set, as all teaking and experimentation is done with test and validation set to avoid test set contamination. Only directly before submission the final number on the test set is updated in the report.
 
-The dataset contains 43 different german traffic signs, some of them blurred or occluded [1](#Houben2013). In the udacity version the data is already formated to have the sign in the center and a resolution of 32x32 pixel. Each image is a RGB color coded image, so the shape is (32,32,3) for one image in the dataset. Two example images are shown below. The whole data set is a piceled python numpy array with all the images inside.
+The dataset contains 43 different german traffic signs, some of them blurred or occluded [[1](#Houben2013)]. In the udacity version the data is already formated to have the sign in the center and a resolution of 32x32 pixel. Each image is a RGB color coded image, so the shape is (32,32,3) for one image in the dataset. Two example images are shown below. The whole data set is a piceled python numpy array with all the images inside.
 
 A random image is visualised from the dataset:
 ![alt text][image1]
 
 Each image has 3 color channels. For later normalization it is interesting to see in what values each channel ranges. A combined histogram showing the number of occurances of a color value on y and the color value (ranging from 0 to 255) on x over the whole dataset shows that there is interestingly only little variation overall in the color channels in over the whole dataset. It also shows that the value distribution is strongly skewed. There is a small peak in lower range of color saturation and a big peak in the high values.
 
-The similarity of the overall color distribution together with the fact that earlier papers found that greyscale still performs better than color images [1](#Sermanet2011) lead to the motivation to convert the dataset to a greyscale dataset. Since the overall color distribution is already almost the same the greyscale transformation changes very little on the overal distribution of values, as can be seen in Figure X. The same random sample picture can be seen after the greyscale transformation in Figure X2.
+The similarity of the overall color distribution together with the fact that earlier papers found that greyscale still performs better than color images [[1](#Sermanet2011)] lead to the motivation to convert the dataset to a greyscale dataset. Since the overall color distribution is already almost the same the greyscale transformation changes very little on the overal distribution of values, as can be seen in Figure X. The same random sample picture can be seen after the greyscale transformation in Figure X2.
 
 All this analysis can be found in the cells under "Step 1: Dataset Summary & Exploration" in the [project code](https://github.com/joergsimon/SDCND-Term1-TrafficSign/Traffic_Sign_Classifier.ipynb).
 
@@ -55,7 +55,7 @@ All this analysis can be found in the cells under "Step 1: Dataset Summary & Exp
 
 #### Preprocessing
 
-Only very little preprocessing was done for the images. Basically only conversion to greyscale. Since batch normalization layers are used in ever layer the moving the data to the center and normalize variance is taken care of anyway. Crafting features was not done because the CNN should learn this transformation by itself. What mainly would have been interesting is using data augmentation to have additional training samples and make the model less prone to things like rotation, shift or blur. Out of time reasons this was not done.
+Only very little preprocessing was done for the images. Basically only conversion to greyscale. Since batch normalization [[4](#Ioffe2015)] layers are used in ever layer the moving the data to the center and normalize variance is taken care of anyway. Crafting features was not done because the CNN should learn this transformation by itself. What mainly would have been interesting is using data augmentation to have additional training samples and make the model less prone to things like rotation, shift or blur. Out of time reasons this was not done.
 
 #### Model training
 
@@ -63,7 +63,7 @@ The model was trained with 67.13% (34.799 samples) for training, 8.5% (4.410 sam
 
 #### Final Model Architecture
 
-The final architecture was based on the inception model. Ony one raw convolution layer was used at the start and without batch normalization (6 filters of 5x5). After that 6 inception layers follow with a final number of 512 filters in the last layer. After the first two and the fourth layer pooling is used to reduce the input dimension. The last inception is avaraged pooled over all 512 filters, and then three fully connected layers reduce to the final result. All activations are based on RELU activations as they are a simple model and still converging faster then f.e. sigmoid. ELU was not used as I did not know them untill more towards the end of the Term,
+The final architecture was based on the inception model [[6](#Szegedy2015)]. Ony one raw convolution layer was used at the start and without batch normalization [[4](#Ioffe2015)]] (6 filters of 5x5). After that 6 inception layers follow with a final number of 512 filters in the last layer. After the first two and the fourth layer pooling is used to reduce the input dimension. The last inception is avaraged pooled over all 512 filters, and then three fully connected layers reduce to the final result. All activations are based on RELU activations as they are a simple model and still converging faster then f.e. sigmoid. ELU was not used as I did not know them untill more towards the end of the Term,
 
 The code for my final model is located in Model Architecture -> Inception Model in the notebook. 
 
@@ -109,7 +109,7 @@ F.e. if I use an inception to have 64 filters then:
 | 5x5 to output   		| output: 16 Filters   							|
 | Max Pool 3x3 stride 	| output: 16 Filters   							| 
 
-The training is in the same section of the notebook a little bit below. The Epoc size was set to 6 since after 6 the model usually fluctuaded with increased learning and actually decreased learning on the validation set, which is a usual sign of overfitting. Batch size of 128 seemd to be a reasonable default. As an optimizer the AdamOptimizer [3](#Kingma2015) is used, who uses momentum f.e. to overcome saddle points in the error function. The learning rate was choosen based on experiences in the class...
+The training is in the same section of the notebook a little bit below. The Epoc size was set to 6 since after 6 the model usually fluctuaded with increased learning and actually decreased learning on the validation set, which is a usual sign of overfitting. Batch size of 128 seemd to be a reasonable default. As an optimizer the AdamOptimizer [[3](#Kingma2015)] is used, who uses momentum f.e. to overcome saddle points in the error function. The learning rate was choosen based on experiences in the class...
 
 #### Approach
 
@@ -118,9 +118,9 @@ My final model results were:
 * validation set accuracy of 94.2% 
 * test set accuracy of 93.7%
 
-First I tried different general models and tune the parameter in the sense of tuning the filter number, sizes and similar. I also read a lot of papers on CNNs. Some are quotet, since I write that last minute, some quotes I might fill in later. Basically I could not tune the LeNet-5 Architecture over 93% at first for me, so I tried another architecutre. An already inception like architecture was references as baseline architecuture in the project, so I tried this one. Three paralell streams of convolution filters are computed, and in the end concatenated. The relatively direct translation of the architecture (as much as possible at least) resulted in a worse performance than the LeNet-5. With some adoptions it got better than LeNet-5 but still below 90%. I then read about the inception model, batch normalization, dropout and other techniques, and assembled a simple inception architecture, which yielded a good result on the validation set for me. For details on the architecture see above.
+First I tried different general models and tune the parameter in the sense of tuning the filter number, sizes and similar. I also read a lot of papers on CNNs. Some are quotet, since I write that last minute, some quotes I might fill in later. Basically I could not tune the LeNet-5 Architecture over 93% at first for me, so I tried another architecutre. An already inception like architecture was references as baseline architecuture in the project, so I tried this one. Three paralell streams of convolution filters are computed, and in the end concatenated. The relatively direct translation of the architecture (as much as possible at least) resulted in a worse performance than the LeNet-5. With some adoptions it got better than LeNet-5 but still below 90%. I then read about the inception model [[6](#Szegedy2015)], batch normalization [[4](#Ioffe2015)], dropout [[5](#Srivastava2014)] and other techniques, and assembled a simple inception architecture, which yielded a good result on the validation set for me. For details on the architecture see above.
 
-Basically most parameters were choosen because of values reported in papers, like 0.5 for dropout, or that I reduce the number of filters for the intermediate 1x1 convolutions in the inception. A high Dropout was nesecary because of overfitting. Also I think if I would have taken the complete inception v2 architecture but without pretrained weights the model would likely have overfittet. In the end the architecture is some empirically grown network of several small results.
+Basically most parameters were choosen because of values reported in papers, like 0.5 for dropout [[5](#Srivastava2014)], or that I reduce the number of filters for the intermediate 1x1 convolutions in the inception. A high Dropout [[5](#Srivastava2014)] was nesecary because of overfitting. Also I think if I would have taken the complete inception v2 architecture but without pretrained weights the model would likely have overfittet. In the end the architecture is some empirically grown network of several small results.
 
 ### Test a Model on New Images
 
@@ -227,3 +227,9 @@ This was computed after the whole report is written. The score on the test data 
 [2]<a name="Sermanet2011"></a> Pierre Sermanet and Yann LeCun 2011, Traffic sign recognition with multi-scale Convolutional Networks, The 2011 International Joint Conference on Neural Networks (IJCNN)
 
 [3]<a name="Kingma2015"></a> Diederik P. Kingma and Jimmy Lei Ba 2015, ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION, 3rd International Conference for Learning Representations, San Diego, 2015 (ICLR)
+
+[4]<a name="Ioffe2015"></a> Sergey Ioffe and Christian Szegedy 2015, Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+
+[5]<a name="Srivastava2014"></a> Srivastava et al. 2014, Dropout: a simple way to prevent neural networks from overfitting, The Journal of Machine Learning Research Vol 15 Issue 1
+
+[6]<a name="Szegedy2015"></a> Szegedy et al. 2015, Going Deeper with Convolutions, in ILSVRC 2014 
