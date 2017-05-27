@@ -140,6 +140,12 @@ The first and the second image have fractions of other images inside the image a
 | No vehicles	        | No vehicles     	                			|
 | Speed limit (120km/h)	| Speed limit (120km/h)      					|
 
+#### How that compares to the other results
+
+The test with 7 new images yielded a accuracy of 57.1%. Training, validation and test was above 90% so one would expect a higher number here. The unseen test set had 12.630 items inside and still archieved a good accuracy which would mean we are not overfitting. However, it can easily be that there is some uniformity f.e. in the background the model is overfitting to which affects the whole dataset. To really find out if we were just really unlucky with the small sample size of really new images or are indeed overfitting an additonal test set of at least 100 images should be assembled.
+
+#### Confidences
+
 57.1% is not the highes rate but okayish. Generally the model was pretty certain of it's predictions. While the top 5 accuracy is way better (85.7%) if the label is in the top 5 its certainty is still most of the time almost zero.
 
 The list of confidences per prediction is shown here:
